@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "name": "Uva",
+      "price": "15",
+      "stock": "30",
+      "id": "630f"
+    },
+    {
+      "id": "1e88",
+      "name": "Nicolas ",
+      "price": "1",
+      "stock": "1"
+    },
+    {
+      "id": "3cc7",
+      "name": "Vitor",
+      "price": "0.5",
+      "stock": "1"
+    }
+  ]
+}
