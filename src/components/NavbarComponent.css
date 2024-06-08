@@ -1,0 +1,26 @@
+nav {
+  background-color: #333;
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center; /* Centraliza os links horizontalmente */
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 1rem; /* Espaço entre os links */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+nav a:hover {
+  text-decoration: underline; /* Efeito hover para os links */
+}

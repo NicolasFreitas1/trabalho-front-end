@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import "../../App.css";
 import UserTable from "../../components/UserTable";
 import UserForm from "../../components/UserForm";
+import NavbarComponent from "../../components/NavbarComponent";
+import FooterComponent from "../../components/FooterComponent";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -32,7 +34,7 @@ function Users() {
     setLogin("");
     setPassword("");
     setEmail("");
-    setType("")
+    setType("");
   };
 
   // Busca apenas um usuários pelo seu id:
@@ -115,7 +117,7 @@ function Users() {
 
   return (
     <>
-      <h2>Listagem de Usuários</h2>
+      <NavbarComponent />
       <div>
         {users.length > 0 ? (
           <UserTable
@@ -137,6 +139,8 @@ function Users() {
         handlePassword={handlePassword}
         saveUser={saveUser}
       />
+
+      <FooterComponent />
     </>
   );
 }
