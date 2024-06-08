@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import "../../App.css";
 import ServiceTable from "..//../components/ServiceTable";
 import ServiceForm from "../../components/ServiceForm";
+import NavbarComponent from "../../components/NavbarComponent";
+import FooterComponent from "../../components/FooterComponent";
 
 function Services() {
   const [services, setServices] = useState([]);
@@ -117,7 +119,7 @@ function Services() {
 
   return (
     <>
-      <h2>Listagem Produtos</h2>
+      <NavbarComponent />
       <div>
         {services.length > 0 ? (
           <ServiceTable
@@ -141,6 +143,8 @@ function Services() {
         handleDuration={handleDuration}
         saveService={saveService}
       />
+
+      <FooterComponent />
     </>
   );
 }
