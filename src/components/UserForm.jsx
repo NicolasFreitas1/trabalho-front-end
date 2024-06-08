@@ -6,9 +6,13 @@ function UserForm({
   name,
   login,
   password,
+  email,
+  type,
   handleName,
   handleLogin,
   handlePassword,
+  handleEmail,
+  handleType,
   saveUser,
   error,
 }) {
@@ -48,6 +52,28 @@ function UserForm({
           type="password"
           name="password"
           onChange={(e) => handlePassword(e)}
+          required
+        />
+                <label className="form-label" htmlFor="email">
+          Email:
+        </label>
+        <input
+          className="form-input"
+          value={email}
+          type="email"
+          name="email"
+          onChange={(e) => handleEmail(e)}
+          required
+        />
+                <label className="form-label" htmlFor="type">
+          Tipo:
+        </label>
+        <input
+          className="form-input"
+          value={type}
+          type="type"
+          name="type"
+          onChange={(e) => handleType(e)}
           required
         />
         <input className="form-submit" type="submit" value="Cadastrar" />

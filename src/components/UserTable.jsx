@@ -12,6 +12,9 @@ export default function UserTable({ users, deleteUser, editUser }) {
             <th>Cod.</th>
             <th>Nome</th>
             <th>Login</th>
+            <th>E-mail</th>
+            <th>Tipo</th>
+            
             <th style={{ textAlign: "center" }}>Ações</th>
           </tr>
         </thead>
@@ -21,6 +24,8 @@ export default function UserTable({ users, deleteUser, editUser }) {
               <td>{user.id}</td>
               <td>{user.name}</td>
               <td>{user.login}</td>
+              <td>{user.email}</td>
+              <td>{user.type}</td>
               <td className={classes.actions}>
                 <button onClick={() => editUser(user.id)}>Editar</button>
                 <button onClick={() => deleteUser(user.id)}>Excluir</button>

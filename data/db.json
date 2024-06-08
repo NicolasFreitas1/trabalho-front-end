@@ -18,13 +18,17 @@
       "id": "1e88",
       "name": "Admin",
       "login": "admin",
-      "password": "123"
+      "password": "123",
+      "email": "admin@admin.com",
+      "type": "A"
     },
     {
       "id": "1615",
       "name": "Vitor",
       "login": "Vt",
-      "password": "123456"
+      "password": "123456",
+      "email": "vitormartins@gmail.com",
+      "type": "P"
     }
   ],
   "services": [
