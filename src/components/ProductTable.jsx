@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import classes from './ProductTable.module.css'
 
 export default function ProductTable({products, deleteProduct, editProduct}) {
