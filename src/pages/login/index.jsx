@@ -16,21 +16,12 @@ function Login() {
       const res = await fetch(userUrl);
       const data = await res.json();
       // Carrega os dados no formulário para edição:
-      console.log("usuarios", data);
-      console.log("login", login);
       const userLogin = data.find((user) => {
-        console.log("LOGIN DOS USUARIOS", user.login);
-        console.log(
-          "teste ",
-          String(user.login).toLowerCase() == login.toLowerCase()
-        );
         return user.login == login;
       });
 
-      console.log("achou usuario", userLogin);
-
       if (userLogin === undefined) {
-        setError("Usuario não encontrado");
+        setError("Usuário não encontrado");
         return;
       }
 
@@ -54,9 +45,6 @@ function Login() {
     e.preventDefault();
 
     await getUserByLogin(login);
-
-    console.log(userLogin);
-    console.log(userPassword);
 
     console.log(e);
   };
