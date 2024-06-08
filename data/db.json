@@ -19,6 +19,12 @@
       "name": "Admin",
       "login": "admin",
       "password": "123"
+    },
+    {
+      "id": "1615",
+      "name": "Vitor",
+      "login": "Vt",
+      "password": "123456"
     }
   ],
   "services": [
