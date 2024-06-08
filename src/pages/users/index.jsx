@@ -10,6 +10,8 @@ function Users() {
   const [name, setName] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [type, setType] = useState("");
   const [edit, setEdit] = useState(false);
 
   const url = "http://localhost:3000/users";
@@ -29,6 +31,8 @@ function Users() {
     setName("");
     setLogin("");
     setPassword("");
+    setEmail("");
+    setType("")
   };
 
   // Busca apenas um usuários pelo seu id:
@@ -41,6 +45,8 @@ function Users() {
     setLogin(data.login);
     setPassword(data.password);
     setId(data.id);
+    setEmail(data.email);
+    setType(data.type);
 
     // Habilita edição:
     setEdit(true);
@@ -53,7 +59,7 @@ function Users() {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ name, login, password }),
+      body: JSON.stringify({ name, login, password, email, type }),
     };
 
     // Cria url para buscar todos ou apenas um usuários
