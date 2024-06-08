@@ -4,7 +4,6 @@ import "../../App.css";
 import UserTable from "../../components/UserTable";
 import UserForm from "../../components/UserForm";
 
-
 function Users() {
   const [users, setUsers] = useState([]);
   const [id, setId] = useState("");
@@ -16,7 +15,7 @@ function Users() {
   const url = "http://localhost:3000/users";
 
   useEffect(() => {
-    // Lista todos os userutos:
+    // Lista todos os usuários:
     const getUsersList = async () => {
       const res = await fetch(url);
       const data = await res.json();
@@ -32,7 +31,7 @@ function Users() {
     setPassword("");
   };
 
-  // Busca apenas um useruto pelo seu id:
+  // Busca apenas um usuários pelo seu id:
   const getUserById = async (id) => {
     // Faz a requisição http
     const res = await fetch(url + `/${id}`);
@@ -57,20 +56,20 @@ function Users() {
       body: JSON.stringify({ name, login, password }),
     };
 
-    // Cria url para buscar todos ou apenas um useruto
+    // Cria url para buscar todos ou apenas um usuários
     const save_url = edit ? url + `/${id}` : url;
 
     // Faz a requisição http
     const res = await fetch(save_url, saveRequestParams);
 
-    // Se for cadastro de useruto novo:
+    // Se for cadastro de usuários novo:
     if (!edit) {
       const newUser = await res.json();
       // Atualização da tabela:
       setUsers((prevUsers) => [...prevUsers, newUser]);
     }
 
-    // Se for edição/atualização de useruto já cadastrado:
+    // Se for edição/atualização de usuários já cadastrado:
     if (edit) {
       const editedUser = await res.json();
       // Atualização da tabela:
@@ -119,7 +118,7 @@ function Users() {
             editUser={getUserById}
           />
         ) : (
-          <h3 style={{ marginBottom: "30px" }}>Nenhum useruto cadastrado...</h3>
+          <h3 style={{ marginBottom: "30px" }}>Nenhum usuário cadastrado...</h3>
         )}
       </div>
 

@@ -1,7 +1,10 @@
 import { useState } from "react";
 import LoginForm from "../../components/LoginForm";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+
   const [login, setLogin] = useState("");
   const [userLogin, setUserLogin] = useState("");
   const [password, setPassword] = useState("");
@@ -28,6 +31,8 @@ function Login() {
       setUserLogin(userLogin.login);
       setUserPassword(userLogin.password);
       setError(null);
+
+      return userLogin;
     } catch (err) {
       console.log("DEU ERRO", err);
       setError("Falha ao realizar o login");
@@ -46,7 +51,13 @@ function Login() {
 
     await getUserByLogin(login);
 
-    console.log(e);
+    if (userPassword !== password) {
+      setError("Usuário não encontrado");
+      return;
+    }
+
+    setError(null);
+    navigate("/products");
   };
 
   return (
