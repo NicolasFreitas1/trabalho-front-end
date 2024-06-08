@@ -1,22 +1,31 @@
 {
   "products": [
     {
-      "name": "Uva",
-      "price": "15",
-      "stock": "30",
-      "id": "630f"
+      "id": "630f",
+      "name": "Mouse",
+      "price": "10.00",
+      "stock": "30"
     },
+    {
+      "id": "120a",
+      "name": "Teclado",
+      "price": "20.00",
+      "stock": "15"
+    }
+  ],
+  "users": [
     {
       "id": "1e88",
-      "name": "Nicolas ",
-      "price": "1",
-      "stock": "1"
-    },
+      "name": "Admin",
+      "login": "admin",
+      "password": "123"
+    }
+  ],
+  "services": [
     {
       "id": "3cc7",
-      "name": "Vitor",
-      "price": "0.5",
-      "stock": "1"
+      "name": "Formatação de computador",
+      "price": "50.00"
     }
   ]
 }

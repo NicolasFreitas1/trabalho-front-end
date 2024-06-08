@@ -1,4 +1,5 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+
 import './ProductForm.css'
 
 function ProductForm({name, price, stock, handleName, handlePrice, handleStock, saveProduct}) {
