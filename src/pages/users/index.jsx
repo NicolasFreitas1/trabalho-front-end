@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "../../App.css";
-import UserTable from "../../components/UserTable";
 import UserForm from "../../components/UserForm";
-import NavbarComponent from "../../components/NavbarComponent";
-import FooterComponent from "../../components/FooterComponent";
+import UserTable from "../../components/UserTable";
 
 function Users() {
   const [users, setUsers] = useState([]);
@@ -117,7 +115,6 @@ function Users() {
 
   return (
     <>
-      <NavbarComponent />
       <div>
         {users.length > 0 ? (
           <UserTable
@@ -139,8 +136,6 @@ function Users() {
         handlePassword={handlePassword}
         saveUser={saveUser}
       />
-
-      <FooterComponent />
     </>
   );
 }

@@ -6,23 +6,34 @@ import Login from "./pages/login/index.jsx";
 import Products from "./pages/products/index.jsx";
 import Services from "./pages/services/index.jsx";
 import Users from "./pages/users/index.jsx";
+import App from "./App.jsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/products",
-    element: <Products />,
-  },
   {
     path: "/login",
     element: <Login />,
   },
   {
-    path: "/users",
-    element: <Users />,
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/products",
+        element: <Products />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+    ],
   },
   {
-    path: "/services",
-    element: <Services />,
+    path: "*",
+    element: <Login />,
   },
 ]);
 

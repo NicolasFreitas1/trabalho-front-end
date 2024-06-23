@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import "../../App.css";
-import ProductTable from "..//../components/ProductTable";
 import ProductForm from "../../components/ProductForm";
-import NavbarComponent from "../../components/NavbarComponent";
-import FooterComponent from "../../components/FooterComponent";
+import ProductTable from "..//../components/ProductTable";
 
 // CRUD COM JSON SERVER
 
@@ -113,7 +111,6 @@ function Products() {
 
   return (
     <>
-      <NavbarComponent />
       <div>
         {products.length > 0 ? (
           <ProductTable
@@ -135,7 +132,6 @@ function Products() {
         handleStock={handleStock}
         saveProduct={saveProduct}
       />
-      <FooterComponent />
     </>
   );
 }
