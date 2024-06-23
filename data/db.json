@@ -33,9 +33,11 @@
   ],
   "services": [
     {
-      "id": "3cc7",
-      "name": "Formatação de computador",
-      "price": "50.00"
+      "id": "b02a",
+      "name": "Formatacao",
+      "price": "12",
+      "description": "Formatacao de pc",
+      "duration": "2"
     }
   ]
 }

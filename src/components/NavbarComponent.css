@@ -1,26 +1,51 @@
+/* src/components/NavbarComponent.css */
+
 nav {
   background-color: #333;
+  color: white;
   padding: 1rem;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  justify-content: center; /* Centraliza os links horizontalmente */
+  justify-content: center;
   padding: 0;
   margin: 0;
 }
 
 nav li {
-  margin: 0 1rem; /* Espaço entre os links */
+  margin: 0 1rem;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  font-size: 1.2rem;
 }
 
 nav a:hover {
-  text-decoration: underline; /* Efeito hover para os links */
+  text-decoration: underline;
+}
+
+.login-button {
+  margin-left: auto; /* Empurra o botão para a direita */
+}
+
+.login-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.login-btn:hover {
+  background-color: #45a049;
 }

@@ -17,6 +17,11 @@ function NavbarComponent() {
         <li>
           <Link to="/products">Produtos</Link>
         </li>
+        <li className="login-button">
+          <Link to="/login" className="login-btn">
+            Logout
+          </Link>
+        </li>
       </ul>
     </nav>
   );

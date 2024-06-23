@@ -13,6 +13,7 @@ function Users() {
   const [email, setEmail] = useState("");
   const [type, setType] = useState("");
   const [edit, setEdit] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const url = "http://localhost:3000/users";
 
@@ -50,6 +51,7 @@ function Users() {
 
     // Habilita edição:
     setEdit(true);
+    setShowForm(true);
   };
 
   const saveUser = async (e) => {
@@ -85,6 +87,7 @@ function Users() {
     }
 
     clearForm();
+    setShowForm(false);
     setEdit(false);
   };
 
@@ -113,29 +116,49 @@ function Users() {
     setPassword(e.target.value);
   };
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+    if (!showForm) {
+      clearForm(); // Limpa o formulário ao alternar para exibir
+    }
+  };
+
   return (
     <>
-      <div>
-        {users.length > 0 ? (
-          <UserTable
-            users={users}
-            deleteUser={deleteUser}
-            editUser={getUserById}
-          />
-        ) : (
-          <h3 style={{ marginBottom: "30px" }}>Nenhum usuário cadastrado...</h3>
-        )}
+      <div style={{ textAlign: "right", marginBottom: "10px" }}>
+        <button
+          onClick={toggleForm}
+          style={{ padding: "10px 20px", fontSize: "16px" }}
+        >
+          {showForm ? "Mostrar apenas a tabela" : "Adicionar/Editar Produto"}
+        </button>
       </div>
 
-      <UserForm
-        name={name}
-        login={login}
-        password={password}
-        handleName={handleName}
-        handleLogin={handleLogin}
-        handlePassword={handlePassword}
-        saveUser={saveUser}
-      />
+      {showForm ? (
+        <UserForm
+          name={name}
+          login={login}
+          password={password}
+          handleName={handleName}
+          handleLogin={handleLogin}
+          handlePassword={handlePassword}
+          saveUser={saveUser}
+        />
+      ) : (
+        <div>
+          {users.length > 0 ? (
+            <UserTable
+              users={users}
+              deleteUser={deleteUser}
+              editUser={getUserById}
+            />
+          ) : (
+            <h3 style={{ marginBottom: "30px" }}>
+              Nenhum usuário cadastrado...
+            </h3>
+          )}
+        </div>
+      )}
     </>
   );
 }

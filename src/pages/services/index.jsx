@@ -12,6 +12,7 @@ function Services() {
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const [edit, setEdit] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   const url = "http://localhost:3000/services";
 
@@ -44,9 +45,9 @@ function Services() {
     setDescription(data.description);
     setDuration(data.duration);
     setId(data.id);
-
     // Habilita edição:
     setEdit(true);
+    setShowForm(true);
   };
 
   const saveService = async (e) => {
@@ -84,6 +85,7 @@ function Services() {
     }
 
     clearForm();
+    setShowForm(false);
     setEdit(false);
   };
 
@@ -115,31 +117,51 @@ function Services() {
     setDuration(e.target.value);
   };
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+    if (!showForm) {
+      clearForm(); // Limpa o formulário ao alternar para exibir
+    }
+  };
+
   return (
     <>
-      <div>
-        {services.length > 0 ? (
-          <ServiceTable
-            services={services}
-            deleteService={deleteService}
-            editService={getServiceById}
-          />
-        ) : (
-          <h3 style={{ marginBottom: "30px" }}>Nenhum produto cadastrado...</h3>
-        )}
+      <div style={{ textAlign: "right", marginBottom: "10px" }}>
+        <button
+          onClick={toggleForm}
+          style={{ padding: "10px 20px", fontSize: "16px" }}
+        >
+          {showForm ? "Mostrar apenas a tabela" : "Adicionar/Editar Produto"}
+        </button>
       </div>
 
-      <ServiceForm
-        name={name}
-        price={price}
-        description={description}
-        duration={duration}
-        handleName={handleName}
-        handlePrice={handlePrice}
-        handleDescription={handleDescription}
-        handleDuration={handleDuration}
-        saveService={saveService}
-      />
+      {showForm ? (
+        <ServiceForm
+          name={name}
+          price={price}
+          description={description}
+          duration={duration}
+          handleName={handleName}
+          handlePrice={handlePrice}
+          handleDescription={handleDescription}
+          handleDuration={handleDuration}
+          saveService={saveService}
+        />
+      ) : (
+        <div>
+          {services.length > 0 ? (
+            <ServiceTable
+              services={services}
+              deleteService={deleteService}
+              editService={getServiceById}
+            />
+          ) : (
+            <h3 style={{ marginBottom: "30px" }}>
+              Nenhum produto cadastrado...
+            </h3>
+          )}
+        </div>
+      )}
     </>
   );
 }

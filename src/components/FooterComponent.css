@@ -1,40 +1,19 @@
+/* src/components/FooterComponent.css */
+
 footer {
   background-color: #333;
   color: white;
+  text-align: center;
   padding: 1rem 0;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  text-align: center;
+  left: 0;
+  z-index: 1000;
 }
 
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-content p {
-  margin: 0.5rem 0;
-}
-
-.footer-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.footer-content li {
-  margin: 0 1rem;
-}
-
-.footer-content a {
-  color: white;
-  text-decoration: none;
-}
-
-.footer-content a:hover {
-  text-decoration: underline;
+  padding: 0 1rem;
 }

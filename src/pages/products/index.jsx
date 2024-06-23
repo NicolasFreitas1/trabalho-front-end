@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
-
 import "../../App.css";
 import ProductForm from "../../components/ProductForm";
 import ProductTable from "..//../components/ProductTable";
-
-// CRUD COM JSON SERVER
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -13,11 +10,10 @@ function Products() {
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
   const [edit, setEdit] = useState(false);
-
+  const [showForm, setShowForm] = useState(false);
   const url = "http://localhost:3000/products";
 
   useEffect(() => {
-    // Lista todos os produtos:
     const getProductsList = async () => {
       const res = await fetch(url);
       const data = await res.json();
@@ -33,19 +29,15 @@ function Products() {
     setStock("");
   };
 
-  // Busca apenas um produto pelo seu id:
   const getProductById = async (id) => {
-    // Faz a requisição http
     const res = await fetch(url + `/${id}`);
     const data = await res.json();
-    // Carrega os dados no formulário para edição:
     setName(data.name);
     setPrice(data.price);
     setStock(data.stock);
     setId(data.id);
-
-    // Habilita edição:
     setEdit(true);
+    setShowForm(true); // Mostrar formulário ao buscar produto
   };
 
   const saveProduct = async (e) => {
@@ -58,23 +50,17 @@ function Products() {
       body: JSON.stringify({ name, price, stock }),
     };
 
-    // Cria url para buscar todos ou apenas um produto
     const save_url = edit ? url + `/${id}` : url;
 
-    // Faz a requisição http
     const res = await fetch(save_url, saveRequestParams);
 
-    // Se for cadastro de produto novo:
     if (!edit) {
       const newProduct = await res.json();
-      // Atualização da tabela:
       setProducts((prevProducts) => [...prevProducts, newProduct]);
     }
 
-    // Se for edição/atualização de produto já cadastrado:
     if (edit) {
       const editedProduct = await res.json();
-      // Atualização da tabela:
       const editedProductIndex = products.findIndex((prod) => prod.id === id);
       products[editedProductIndex] = editedProduct;
       setProducts(products);
@@ -82,10 +68,10 @@ function Products() {
 
     clearForm();
     setEdit(false);
+    setShowForm(false); // Esconder formulário após salvar
   };
 
   const deleteProduct = async (id) => {
-    // Faz a requisição http
     const res = await fetch(url + `/${id}`, {
       method: "DELETE",
       headers: {
@@ -94,11 +80,9 @@ function Products() {
     });
 
     const deletedProduct = await res.json();
-    // Atualização da tabela:
     setProducts(products.filter((prod) => prod.id !== deletedProduct.id));
   };
 
-  // Mudança dos estados ao digitar no formulário:
   const handleName = (e) => {
     setName(e.target.value);
   };
@@ -109,29 +93,49 @@ function Products() {
     setStock(e.target.value);
   };
 
+  const toggleForm = () => {
+    setShowForm(!showForm);
+    if (!showForm) {
+      clearForm(); // Limpa o formulário ao alternar para exibir
+    }
+  };
+
   return (
     <>
-      <div>
-        {products.length > 0 ? (
-          <ProductTable
-            products={products}
-            deleteProduct={deleteProduct}
-            editProduct={getProductById}
-          />
-        ) : (
-          <h3 style={{ marginBottom: "30px" }}>Nenhum produto cadastrado...</h3>
-        )}
+      <div style={{ textAlign: "right", marginBottom: "10px" }}>
+        <button
+          onClick={toggleForm}
+          style={{ padding: "10px 20px", fontSize: "16px" }}
+        >
+          {showForm ? "Mostrar apenas a tabela" : "Adicionar/Editar Produto"}
+        </button>
       </div>
 
-      <ProductForm
-        name={name}
-        price={price}
-        stock={stock}
-        handleName={handleName}
-        handlePrice={handlePrice}
-        handleStock={handleStock}
-        saveProduct={saveProduct}
-      />
+      {showForm ? (
+        <ProductForm
+          name={name}
+          price={price}
+          stock={stock}
+          handleName={handleName}
+          handlePrice={handlePrice}
+          handleStock={handleStock}
+          saveProduct={saveProduct}
+        />
+      ) : (
+        <div>
+          {products.length > 0 ? (
+            <ProductTable
+              products={products}
+              deleteProduct={deleteProduct}
+              editProduct={getProductById}
+            />
+          ) : (
+            <h3 style={{ marginBottom: "30px" }}>
+              Nenhum produto cadastrado...
+            </h3>
+          )}
+        </div>
+      )}
     </>
   );
 }
