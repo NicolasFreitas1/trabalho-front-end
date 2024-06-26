@@ -130,7 +130,7 @@ function Users() {
           onClick={toggleForm}
           style={{ padding: "10px 20px", fontSize: "16px" }}
         >
-          {showForm ? "Mostrar apenas a tabela" : "Adicionar/Editar Produto"}
+          {showForm ? "Mostrar apenas a tabela" : "Adicionar/Editar"}
         </button>
       </div>
 
